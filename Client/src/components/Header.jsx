@@ -7,8 +7,8 @@ export default function Header() {
    <div className='flex justify-between items-center max-w-6xl mx-auto p-2.5'>
    <Link to='/'>
     <h1 className='font-bold text-sm sm:text-xl flex flex-wrap cursor-pointer'>
-      <span className='text-slate-700'>Ivy</span>
-      <span className='text-slate-900'>Estate</span>
+      <span className='text-black-700'>Ivy</span>
+      <span className='text-gray-700'>Estate</span>
     </h1>
     </Link>
     <form className='bg-slate-100 p-2 rounded-lg flex item-center'>
@@ -17,17 +17,17 @@ export default function Header() {
     </form>
     <ul className='flex gap-4 '>
     <Link to='/'>
-       <l1 className='hidden sm:inline text-slate-600 hover:text-black cursor-pointer'>
+       <l1 className='hidden sm:inline text-gray-700 hover:text-black cursor-pointer'>
          Home
        </l1>
     </Link>
     <Link to='about'>
-       <l1 className='hidden sm:inline text-slate-600 hover:text-black cursor-pointer'>
+       <l1 className='hidden sm:inline text-gray-700 hover:text-black cursor-pointer'>
          About
        </l1>
     </Link>
     <Link to='sign-in'>
-       <l1 className=' text-slate-600 hover:text-black cursor-pointer'>
+       <l1 className=' text-gray-700 hover:text-black cursor-pointer'>
          Sign In
        </l1>
     </Link>
