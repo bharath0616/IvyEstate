@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock,faEnvelope,faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function SignUp() {
   const [formData, setFormData] = useState({})
@@ -47,17 +49,28 @@ export default function SignUp() {
     <div className='p-4 max-w-lg mx-auto border-2 black mt-8 rounded-xl shadow-xl'>
       <h1 className='text-3xl text-center font-bold my-8'>Sign Up</h1>
       <form className='flex flex-col gap-5 p-6'>
-        <input type="text" placeholder='Username' 
-        className='border p-4 shadow-md 
-        rounded-lg focus:bg-gray-200' 
-         id='username' onChange={handleChange}/>
+      <div className='flex relative'>
+          <FontAwesomeIcon icon={faUser} className="text-gray-400 h-6 mt-4 ml-3 absolute" />
+          <input type="text" placeholder='Username' 
+          className='border p-4 shadow-md w-full pl-10
+          rounded-lg focus:bg-gray-200' 
+          id='username' onChange={handleChange}/>
+      </div>
+
+      <div className='flex relative'>
+        <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 h-6 mt-4 ml-3 absolute" />
         <input type="email" placeholder='Email' className='border p-4 shadow-md 
-        rounded-lg  focus:bg-gray-200' id='email' autoComplete='current username'onChange={handleChange}/>
+        rounded-lg  focus:bg-gray-200 w-full pl-10' id='email' autoComplete='current username'onChange={handleChange}/>
+      </div>
+
+      <div className='flex relative'>
+        <FontAwesomeIcon icon={faLock} className="text-gray-400 h-6 mt-4 ml-3 absolute" />
         <input type="password" placeholder='Password' className='border p-4 shadow-md
-         rounded-lg  focus:bg-gray-200 ' id='password'autoComplete='current password' onChange={handleChange}/>
+         rounded-lg  focus:bg-gray-200 w-full pl-10' id='password'autoComplete='current password' onChange={handleChange}/>
+      </div>
 
         <button disabled={loading} className='bg-gray-900 text-white p-2.5 rounded-lg hover:bg-gray-700  
-        disabled:bg-gray-500 sh' onClick={handleSubmit}>
+        disabled:bg-gray-500 ' onClick={handleSubmit}>
         {loading ? 'LOADING...' : 'SIGN UP' }</button>
       </form>
       <div className='flex gap-2 mt-6 mb-6 ml-6'> 
