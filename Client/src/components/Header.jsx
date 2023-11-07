@@ -1,5 +1,4 @@
 import React from 'react'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 export default function Header() {
   return (
@@ -13,23 +12,23 @@ export default function Header() {
     </Link>
     <form className='bg-slate-100 p-2 rounded-lg flex item-center'>
       <input type="text" placeholder='Search...' className='bg-transparent focus:outline-none w-24 sm:w-64' />
-      <faSearch className='text-scale-550'/>
+      
     </form>
     <ul className='flex gap-4 '>
     <Link to='/'>
-       <l1 className='hidden sm:inline text-gray-700 hover:text-black cursor-pointer'>
+       <li className='hidden sm:inline text-gray-700 hover:text-black cursor-pointer'>
          Home
-       </l1>
+       </li>
     </Link>
     <Link to='about'>
-       <l1 className='hidden sm:inline text-gray-700 hover:text-black cursor-pointer'>
+       <li className='hidden sm:inline text-gray-700 hover:text-black cursor-pointer'>
          About
-       </l1>
+       </li>
     </Link>
     <Link to='sign-in'>
-       <l1 className=' text-gray-700 hover:text-black cursor-pointer'>
+       <li className=' text-gray-700 hover:text-black cursor-pointer'>
          Sign In
-       </l1>
+       </li>
     </Link>
     </ul>
     </div>
