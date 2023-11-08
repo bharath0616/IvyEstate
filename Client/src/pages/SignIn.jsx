@@ -3,12 +3,13 @@ import { Link,useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock,faEnvelope, faSignIn } from '@fortawesome/free-solid-svg-icons'
-
+import { faLock,faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch, useSelector } from 'react-redux';
+import { signinStart,signinSuccess,signinFailure } from '../redux/user/userSlice';
 export default function SignIn() {
   const [formData, setFormData] = useState({})
-  const [error,setError]=useState(null);
-  const[loading,SetLoading]=useState(false);
+  const {loading , error} =useSelector((state)=>state.user)
+  const dispatch=useDispatch();
   const navigate=useNavigate();
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const handleChange=(e)=>{
@@ -29,11 +30,11 @@ export default function SignIn() {
   const handleSubmit=async (e)=>{
     e.preventDefault();
     if (!isCaptchaValid) {
-      setError('Please complete the reCAPTCHA challenge.');
+      dispatch(signinFailure('Please complete the reCAPTCHA challenge.'));
       return
     }
     try{
-      SetLoading(true);
+      dispatch(signinStart());
       const res= await fetch('/api/auth/signin', //proxy to redirect to 5173(client address) from api is set in vite.config.js
       {
         method:'POST',
@@ -46,17 +47,14 @@ export default function SignIn() {
       console.log(data);
 
       if(data.success==false){
-        SetLoading(false);
-        setError(data.message);
+        dispatch(signinFailure(data.message));
         return;
       }
-      SetLoading(false);
-      setError(null);
+      dispatch(signinSuccess(data));
       navigate('/');
     }
     catch (error){
-      SetLoading(false);
-      setError(error.message);
+      dispatch(signinFailure(error.message));
     }
   };
   return (
