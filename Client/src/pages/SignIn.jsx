@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock,faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { signinStart,signinSuccess,signinFailure } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 export default function SignIn() {
   const [formData, setFormData] = useState({})
   const {loading , error} =useSelector((state)=>state.user)
@@ -80,6 +81,9 @@ export default function SignIn() {
         <button disabled={loading} className='bg-gray-900 text-white p-2.5 rounded-lg hover:bg-gray-700  
         disabled:bg-gray-500 sh' onClick={handleSubmit}>
         {loading ? 'LOADING...' : 'SIGN IN' }</button>
+
+        <OAuth/>
+        
       </form>
       <div className='flex gap-2 mt-6 mb-6 ml-6'> 
         <p>New to IvyEstate?</p>

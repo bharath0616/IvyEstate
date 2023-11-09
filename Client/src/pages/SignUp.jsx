@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import emailjs from '@emailjs/browser';
+import OAuth from '../components/OAuth';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -175,6 +176,9 @@ export default function SignUp() {
               e.preventDefault();
               handleSubmit(e);}}>
         {loading ? 'LOADING...' : 'SIGN UP' }</button>
+
+        <OAuth/>
+        
       </form>
       <div className='flex gap-2 mt-6 mb-6 ml-6'> 
         <p>Have an account?</p>
