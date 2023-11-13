@@ -8,8 +8,8 @@ export default function Header() {
    <div className='flex justify-between items-center max-w-6xl mx-auto p-2.5'>
    <Link to='/'>
     <h1 className='font-bold text-sm sm:text-xl flex flex-wrap cursor-pointer'>
-      <span className='text-black-700'>Ivy</span>
-      <span className='text-gray-700'>Estate</span>
+      <span className='text-black-700'></span>
+      <span className='text-gray-700'></span>
     </h1>
     </Link>
     <form className='bg-slate-100 p-2 rounded-lg flex item-center'>
