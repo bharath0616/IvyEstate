@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import {getDownloadURL, getStorage, uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase'
 import { ref } from 'firebase/storage';
+import { updateUserFailure,updateUserSuccess,updateUserStart } from '../redux/user/userSlice';
+import {useDispatch} from 'react-redux';
 export default function Profile() {
   const fileRef=useRef(null)
   const {currentUser}=useSelector((state)=>state.user);
@@ -11,7 +13,7 @@ export default function Profile() {
   const [filePercentage,setFilePercentage]=useState(0);
   const [fileUploadError,setFileUploadError]=useState(false);
   const [formData,setFormData]=useState({});
-
+  const dispatch=useDispatch();
   useEffect(()=>{
     if(file){
       handleFileUpload(file);   
@@ -40,27 +42,53 @@ export default function Profile() {
         setFormData({ ...formData, avatar: downloadURL}));
     }
   )};
+  const handleChange=(e)=>{ 
+    setFormData({...formData,[e.target.id]: e.target.value})
+  };
+  const handleSubmit= async (e)=>{
+    e.preventDefault();
+    try{
+      dispatch(updateUserStart());
+      const res=await fetch(`/api/user/update/${currentUser ._id}`,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify(formData),
+      });
+      const data= await res.json();
+      if(data.success === false){
+          dispatch(updateUserFailure(data.message))
+          return;
+      }
+      dispatch(updateUserSuccess(data));
+    }
+    catch(error){
+      dispatch(updateUserFailure(error.message))
+    }
+  }
+  
 
   return (
     <div className='p-4 max-w-lg mx-auto'>
     <div> 
       <h1 className='text-3xl font-bold my-8 text-center'>Profile</h1>
 
-      <form className='flex flex-col gap-4'>
+      <form className='flex flex-col gap-4' onSubmit={handleSubmit} >
 
-      <input type='file' 
-      ref={fileRef} hidden 
-      onChange={(e)=>setFile(e.target.files[0])} 
-      accept='image/*'
-      />
+         <input type='file' 
+              ref={fileRef} hidden 
+             onChange={(e)=>setFile(e.target.files[0])} 
+             accept='image/*'
+          />
       
-      <img onClick={()=>fileRef.current.click()} 
-      src={formData.avatar || currentUser.avatar } alt='profile'
-      className='rounded-full h-22 w-22 object-cover cursor-pointer self-center mt-1' 
-      title='click to update'/>
+         <img onClick={()=>fileRef.current.click()} 
+             src={formData.avatar || currentUser.avatar } alt='profile'
+             className='rounded-full h-22 w-22 object-cover cursor-pointer self-center mt-1' 
+             title='click to update'/>
       
-      <p className='text-center'>
-            {fileUploadError ? (
+         <p className='text-center'>
+              {fileUploadError ? (
               <span className='text-red-600'>Error uploading image (Image size should be less than 2mb)</span>
             ) : filePercentage > 0 && filePercentage < 100 ? (
               <span className='text-gray-800'>{`Uploading ${filePercentage}%`}</span>
@@ -71,9 +99,20 @@ export default function Profile() {
             )}
           </p>
 
-      <input type='text' placeholder='username' id='username' autoComplete='username' className='border p-4 rounded-lg'/>
-      <input type='email' placeholder='email' id='email' autoComplete='username' className='border p-4 rounded-lg'/>
-      <input type='password' placeholder='password' id='password' autoComplete='password' className='border p-4 rounded-lg'/>
+      <input 
+          type='text' placeholder='username' id='username' 
+          autoComplete='username' className='border p-4 rounded-lg'
+          defaultValue={currentUser.username}
+          onChange={handleChange}/>
+      <input 
+          type='email' placeholder='email' id='email' 
+          autoComplete='username' className='border p-4 rounded-lg'
+          defaultValue={currentUser.email}
+          onChange={handleChange}/>
+      <input 
+          type='password' placeholder='password' id='password'
+          autoComplete='password' className='border p-4 rounded-lg'
+          onChange={handleChange}/>
 
       <button className='bg-gray-900 text-white p-2.5 rounded-lg hover:bg-gray-700  
       disabled:bg-gray-500 ' 

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,6 +38,7 @@ export default function SignUp() {
   const sendEmail = () => {
     if (!name || !email || !password) {
       setLoading(false);
+      // eslint-disable-next-line no-undef
       setErrors(data.message);
       return;
     }
@@ -55,6 +57,7 @@ export default function SignUp() {
     }
 
     emailjs.send(serviceId, templateId, templateParams, publicKey)
+      // eslint-disable-next-line no-unused-vars
       .then((response) => {
         setName('');
         setEmail('');

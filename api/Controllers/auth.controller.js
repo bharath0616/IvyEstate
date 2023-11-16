@@ -1,6 +1,5 @@
 import User from '../models/user.model.js'
 import bcryptjs from 'bcryptjs';
-import mongoose from 'mongoose';
 import { errorHandler } from '../Utils/error.js';
 import jwt from 'jsonwebtoken'
 
