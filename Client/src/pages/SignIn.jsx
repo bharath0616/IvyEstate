@@ -61,7 +61,7 @@ export default function SignIn() {
   };
   return (
     <div className='mr-4 ml-4'>
-    <div className='p-4 max-w-lg mx-auto border-2 black mt-8 rounded-xl shadow-xl'>
+    <div className='p-4 max-w-lg mx-auto bg-red-100 border-2 black mt-8 rounded-xl shadow-xl'>
       <h1 className='text-3xl text-center font-bold my-8'>Sign In</h1>
       <form className='flex flex-col gap-5 p-6'>
         

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,6 +38,7 @@ export default function SignUp() {
   const sendEmail = () => {
     if (!name || !email || !password) {
       setLoading(false);
+      // eslint-disable-next-line no-undef
       setErrors(data.message);
       return;
     }
@@ -55,6 +57,7 @@ export default function SignUp() {
     }
 
     emailjs.send(serviceId, templateId, templateParams, publicKey)
+      // eslint-disable-next-line no-unused-vars
       .then((response) => {
         setName('');
         setEmail('');
@@ -120,7 +123,7 @@ export default function SignUp() {
   };
   return (
     <div className='mr-4 ml-4'>
-    <div className='p-4 max-w-lg mx-auto border-2 black mt-8 rounded-xl shadow-xl'>
+    <div className='p-4 max-w-lg mx-auto bg-red-100 border-2 black mt-8 rounded-xl shadow-xl'>
       <h1 className='text-3xl text-center font-bold my-8'>Sign Up</h1>
       <form className='flex flex-col gap-5 p-6' ref={refForm}>
       <div className='flex relative'>
