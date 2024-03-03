@@ -19,10 +19,10 @@ export default function About() {
         Ivy Estate takes pride in being your trusted partner for all your real estate needs. Specializing in buying, selling, and renting properties across premier neighborhoods, our dedicated team of seasoned agents is committed to delivering top-notch service.
       </p>
       <p className='mb-4 text-gray-900' data-aos="fade-right">
-        Our mission at Ivy Estate is to empower clients in achieving their real estate aspirations. We provide expert advice, personalized service, and an in-depth understanding of the local market. Whether you are looking to buy, sell, or rent a listing, we are here to accompany you on your journey.
+        Our mission at Ivy Estate is to empower clients in achieving their real estate aspirations. We provide expert advice, personalized service, and an in-depth understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to accompany you on your journey.
       </p>
       <p className='mb-4 text-gray-900' data-aos="fade-right">
-        With a team of experienced agents well-versed in the intricacies of the real estate industry, we strive to offer the highest level of service. We believe that the process of buying or selling a listing should be an exciting and rewarding experience, and we are dedicated to making that vision a reality for each of our valued clients.
+        With a team of experienced agents well-versed in the intricacies of the real estate industry, we strive to offer the highest level of service. We believe that the process of buying or selling a property should be an exciting and rewarding experience, and we are dedicated to making that vision a reality for each of our valued clients.
       </p>
     </div>
   );

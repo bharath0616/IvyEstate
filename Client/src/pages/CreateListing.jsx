@@ -340,7 +340,7 @@ export default function CreateListing() {
           <div key={url} className='flex justify-between p-3 border items-center'>
             <img
               src={url}
-              alt='listingimage'
+              alt='listing image'
               className='w-20 h-20 object-contain rounded-lg'
             />
             <button

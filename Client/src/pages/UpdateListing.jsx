@@ -34,7 +34,7 @@ export default function UpdateListing() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchlisting= async () => {
+    const fetchListing = async () => {
       const listingId = params.listingId;
       const res = await fetch(`/api/listing/get/${listingId}`);
       const data = await res.json();
@@ -360,7 +360,7 @@ export default function UpdateListing() {
               >
                 <img
                   src={url}
-                  alt='listingimage'
+                  alt='listing image'
                   className='w-20 h-20 object-contain rounded-lg'
                 />
                 <button

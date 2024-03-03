@@ -89,7 +89,7 @@ export default function Home() {
           ))}
       </Swiper>
 
-      {/* propertyresults for offer, sale and rent */}
+      {/* listing results for offer, sale and rent */}
 
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10' data-aos="fade-down">
         {offerListings && offerListings.length > 0 && (
