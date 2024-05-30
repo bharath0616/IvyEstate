@@ -76,7 +76,7 @@ export default function SignIn() {
       </div>
 
       <ReCAPTCHA 
-    sitekey="6Ld5BO0pAAAAABRVA-2tuBh-LxMy3-biOvEsqW86"
+    sitekey="6Ld5BO0pAAAAAJHWQX_Bumy2Lfbz5uh_R9dGJ9j1"
     onChange={handleCaptchaChange}
   />
         <button disabled={loading} className='bg-gray-900 text-white p-2.5 rounded-lg hover:bg-gray-700  
