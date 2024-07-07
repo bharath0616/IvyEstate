@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import emailjs from '@emailjs/browser';
@@ -62,9 +63,10 @@ export default function SignUp() {
         setName('');
         setEmail('');
         setEmailSent(true); // Set the flag to true after sending
+        toast.success('Email sent successfully!');
       })
       .catch((error) => {
-        alert("Failed to send the message, please try sending again.", error)
+        toast.error("Failed to send the mail!");
       });
   };
 
@@ -105,7 +107,7 @@ export default function SignUp() {
       if(data.success===false){
         setLoading(false);
         setErrors({ global: data.message });
-
+        toast.error("Email already exists")
       }
      else {
         setLoading(false);
@@ -123,7 +125,7 @@ export default function SignUp() {
   };
   return (
     <div className='mr-4 ml-4'>
-    <div className='p-4 max-w-lg mx-auto bg-red-100 border-2 black mt-8 rounded-xl shadow-xl'>
+    <div className='p-4 max-w-lg mx-auto bg-[#b8c0c4] border-2 black mt-8 rounded-xl shadow-xl'>
       <h1 className='text-3xl text-center font-bold my-8'>Sign Up</h1>
       <form className='flex flex-col gap-5 p-6' ref={refForm}>
       <div className='flex relative'>

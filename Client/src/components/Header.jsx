@@ -23,12 +23,12 @@ export default function Header() {
     }
   }, [location.search]);
   return (
-   <header className='bg-indigo-100 shadow-lg'>
-   <div className='flex justify-between items-center max-w-6xl mx-auto p-2.5'>
+    <header className='bg-[#B8B3AF] shadow-lg backdrop-blur-md  border border-gray-200'>
+  <div className='flex justify-between items-center max-w-6xl mx-auto p-2.5'>
    <Link to='/'>
     <h1 className='font-bold text-sm sm:text-xl flex flex-wrap cursor-pointer'>
-      <span className='text-blue-400'>Ivy</span>
-      <span className='text-orange-400'>Estate</span>
+      <span className='text-[#14140D]'>Ivy</span>
+      <span className='text-[#9C7978]'>Estate</span>
     </h1>
     </Link>
     <form className='bg-white p-2 rounded-lg flex item-center'>
@@ -43,7 +43,7 @@ export default function Header() {
     </Link>
     <Link to='about'>
        <li className='hidden sm:inline text-gray-700 hover:text-black cursor-pointer'>
-         About
+         About Us
        </li>
     </Link>
     <Link to='profile'>

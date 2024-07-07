@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import toast from 'react-hot-toast';
 import { Link,useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
@@ -33,6 +34,7 @@ export default function SignIn() {
     e.preventDefault();
     if (!isCaptchaValid) {
       dispatch(signinFailure('Please complete the reCAPTCHA challenge.'));
+      toast.error("Please complete the reCAPTCHA challenge.")
       return
     }
     try{
@@ -50,10 +52,12 @@ export default function SignIn() {
 
       if(data.success==false){
         dispatch(signinFailure(data.message));
+        toast.error(data.message);
         return;
       }
       dispatch(signinSuccess(data));
       navigate('/');
+      toast.success("Sign in successful")
     }
     catch (error){
       dispatch(signinFailure(error.message));
@@ -61,7 +65,7 @@ export default function SignIn() {
   };
   return (
     <div className='mr-4 ml-4'>
-    <div className='p-4 max-w-lg mx-auto bg-red-100 border-2 black mt-8 rounded-xl shadow-xl'>
+    <div className='p-4 max-w-lg mx-auto bg-[#b8c0c4] border-2 black mt-8 rounded-xl shadow-xl'>
       <h1 className='text-3xl text-center font-bold my-8'>Sign In</h1>
       <form className='flex flex-col gap-5 p-6'>
         
@@ -76,7 +80,7 @@ export default function SignIn() {
       </div>
 
       <ReCAPTCHA 
-    sitekey="6Ld5BO0pAAAAAJHWQX_Bumy2Lfbz5uh_R9dGJ9j1"
+    sitekey="6LedUwoqAAAAACRyS8t9-lVCdt77-PHAfwouWybX"
     onChange={handleCaptchaChange}
   />
         <button disabled={loading} className='bg-gray-900 text-white p-2.5 rounded-lg hover:bg-gray-700  
@@ -93,7 +97,6 @@ export default function SignIn() {
         </Link>
       </div>
     </div>
-    {error && <p className='text-red-700 mt-6'>{error}</p>}
     </div>
   )
 }
