@@ -72,15 +72,18 @@
 5. Create a .env file in the backend directory and add the following:
 
    MONGO_URI=your_mongodb_connection_string
+   
    JWT_SECRET=your_jwt_secret
+   
    GOOGLE_CLIENT_ID=your_google_client_id
+   
    GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-6. Start the frontend server:
+7. Start the frontend server:
    ```bash
    npm run dev
 
-7. Start the backend server:
+8. Start the backend server:
    ```bash
    cd ../api
    npm run dev
